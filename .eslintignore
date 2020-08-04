@@ -1,0 +1,9 @@
+__generated__
+node_modules
+dist
+yarn.lock
+.next
+*.png
+*.d.ts
+*.mp4
+*.log

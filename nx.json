@@ -17,7 +17,13 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e",
+          "build-storybook"
+        ]
       }
     }
   },
@@ -27,7 +33,48 @@
     },
     "core-e2e": {
       "tags": [],
-      "implicitDependencies": ["core"]
+      "implicitDependencies": [
+        "core"
+      ]
+    },
+    "plugins-react": {
+      "tags": []
+    },
+    "plugins-react-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "plugins-react"
+      ]
+    },
+    "eslint-config-codelab": {
+      "tags": []
+    },
+    "ui": {
+      "tags": []
+    },
+    "props": {
+      "tags": []
+    },
+    "d3": {
+      "tags": []
+    },
+    "graph": {
+      "tags": []
+    },
+    "dto": {
+      "tags": []
+    },
+    "common": {
+      "tags": []
+    },
+    "event": {
+      "tags": []
+    },
+    "docs": {
+      "tags": []
+    },
+    "utils": {
+      "tags": []
     }
   }
 }
