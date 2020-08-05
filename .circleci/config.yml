@@ -43,6 +43,8 @@ commands:
       - run:
           name: Build Packages
           command: yarn build
+  setup:
+    description: 'Setup Context'
 
 jobs:
   install:
@@ -50,11 +52,13 @@ jobs:
     steps:
       - checkout
       - yarn_install
+      - build-app
       - persist_to_workspace:
           root: ..
           paths:
-            - app/node_modules
-            - app/libs/eslint-config-codelab/node_modules
+            - app
+            # - app/node_modules
+            # - app/libs/eslint-config-codelab/node_modules
             - .cache/Cypress
   lint:
     executor: node
@@ -74,7 +78,6 @@ jobs:
       - checkout
       - attach_workspace:
           at: ..
-      - build-app
       - run:
           name: Run Unit Tests
           command: NX_VERBOSE_LOGGING=true yarn test
