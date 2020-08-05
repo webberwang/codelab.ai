@@ -7,8 +7,6 @@ export default function Template({
   data, // this prop will be injected by the GraphQL query below.
   ...props
 }) {
-  // console.log(data)
-
   const { pageContext } = props
 
   const frontmatters: Array<Frontmatter> = pageContext.edges.map(

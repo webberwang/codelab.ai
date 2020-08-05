@@ -33,8 +33,6 @@ const Layout = (props: LayoutProps) => {
       }),
   )
 
-  console.log(nodes)
-
   const menu = {
     type: 'Menu',
     props: {
@@ -77,8 +75,6 @@ const Layout = (props: LayoutProps) => {
     menu,
   )
 
-  console.log(menuData)
-
   // const data = useStaticQuery(graphql`
   //     query SiteTitleQuery {
   //         site {
@@ -89,7 +85,6 @@ const Layout = (props: LayoutProps) => {
   //     }
   // `);
   //
-  // console.log(data)
 
   return (
     <ALayout>
