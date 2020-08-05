@@ -45,6 +45,22 @@ commands:
           command: yarn build
   setup:
     description: 'Setup Context'
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ..
+  eslint:
+    description: 'ESLint on New Commits'
+    steps:
+      - run: yarn eslint
+  commitlint:
+    description: 'Commitlint on New Commits'
+    steps:
+      - run: yarn commitlint
+  unit-tests:
+    description: 'Unit Tests'
+    steps:
+      - run: NX_VERBOSE_LOGGING=true yarn test
 
 jobs:
   install:
@@ -63,24 +79,14 @@ jobs:
   lint:
     executor: node
     steps:
-      - checkout
-      - attach_workspace:
-          at: ..
-      - run:
-          name: ESLint on Last Commit
-          command: yarn ci:eslint
-      - run:
-          name: Commitlint on Last Commit
-          command: yarn ci:commitlint
+      - setup
+      - eslint
+      - commitlint
   test:
     executor: node
     steps:
-      - checkout
-      - attach_workspace:
-          at: ..
-      - run:
-          name: Run Unit Tests
-          command: NX_VERBOSE_LOGGING=true yarn test
+      - setup
+      - unit-tests
 
 workflows:
   version: 2.1
